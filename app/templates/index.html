@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Property Price</h1>
+        <form method="POST">
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" required>
+
+            <label for="bathrooms">Bathrooms:</label>
+            <input type="number" id="bathrooms" name="bathrooms" required>
+
+            <label for="area">Area (scaled):</label>
+            <input type="number" id="area" name="area" required>
+
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="Souissi">Souissi</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="type">Property Type:</label>
+            <select id="type" name="type">
+                <option value="Villa">Villa</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h2>Predicted Price: {{ prediction }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
